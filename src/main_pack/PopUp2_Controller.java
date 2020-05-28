@@ -16,7 +16,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
+/**
+ * Klasa obslugujace menu konca gry w przypadku braku punktow- powrot do menu, sprobuj jeszcze raz
+ */
 public class PopUp2_Controller implements Initializable {
     public Label hello_user;
     String USER;
@@ -24,7 +26,10 @@ public class PopUp2_Controller implements Initializable {
     String HERO2;
     int SCORE;
 
-
+    /**
+     * Metoda ustawiajaca parametr bohatera
+     *
+     */
     public void set_hero(String herosik , String herosik2){
         HERO = herosik;
         HERO2 = herosik2;
@@ -32,13 +37,20 @@ public class PopUp2_Controller implements Initializable {
     }
 
 
-
+    /**
+     * Metoda ustawiajaca parametr uzytkownika
+     * @param user
+     */
     public void user(String user){
         USER = user;
     }
 
 
-
+    /**
+     * Metoda cofajaca do menu glownego
+     * @param actionEvent
+     * @throws IOException
+     */
     public void go_to_menu(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/menu_layout.fxml"));
@@ -51,7 +63,11 @@ public class PopUp2_Controller implements Initializable {
         window.setScene(nextScene);
         window.show();
     }
-
+    /**
+     * Metoda ktora zaczyna rozgrywke singleplayer jeszcze raz
+     * @param actionEvent
+     * @throws Exception
+     */
     public void try_again(ActionEvent actionEvent) throws Exception {
         //Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();

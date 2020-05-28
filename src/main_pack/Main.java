@@ -6,7 +6,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Klasa odpowiedzialna za powolanie glownego menu
+ */
 public class Main extends Application {
+    /**
+     * Metoda do powolania okna z ekranem logowania
+     * @param primaryStage
+     * @throws Exception
+     */
 
     @Override
     public void start(Stage primaryStage) throws Exception{

@@ -14,6 +14,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * Klasa odpowiadajaca za menu po zalogowaniu
+ */
 public class menu_Controller implements Initializable {
     public Label hello_user;
     public String USER;
@@ -23,11 +26,20 @@ public class menu_Controller implements Initializable {
 
     }
 
+    /**
+     * Metoda do wyswietlania nazwy zalogowanego uzytkownika
+     * @param unsername
+     */
     public void hello_user(String unsername){
         hello_user.setText("Login as: "+unsername);
         USER = unsername;
     }
 
+    /**
+     * Metoda cofajaca menu jedno wstecz - wylogowanie
+     * @param actionEvent
+     * @throws IOException
+     */
     public void logout(ActionEvent actionEvent) throws IOException {
         USER = null;
         Parent nextRoot = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
@@ -37,6 +49,11 @@ public class menu_Controller implements Initializable {
         window.show();
     }
 
+    /**
+     * Metoda powolujaca menu gry singleplayer
+     * @param actionEvent
+     * @throws IOException
+     */
     public void single(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/single_layout.fxml"));
@@ -49,7 +66,11 @@ public class menu_Controller implements Initializable {
         window.setScene(nextScene);
         window.show();
     }
-
+    /**
+     * Metoda powolujaca menu gry multiplayer
+     * @param actionEvent
+     * @throws IOException
+     */
     public void multi(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/multi_1_layout.fxml"));
@@ -62,7 +83,11 @@ public class menu_Controller implements Initializable {
         window.setScene(nextScene);
         window.show();
     }
-
+    /**
+     * Metoda powolujaca okno tabeli wynikow
+     * @param actionEvent
+     * @throws IOException
+     */
     public void show_score(ActionEvent actionEvent) throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/ShowScore_layout.fxml"));
@@ -76,6 +101,10 @@ public class menu_Controller implements Initializable {
         window.show();
     }
 
+    /**
+     * Metoda powolujaca okno z prezentacja postaci
+     * @param actionEvent
+     */
     public void show_hero(ActionEvent actionEvent) {
     }
 }

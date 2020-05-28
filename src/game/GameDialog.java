@@ -11,6 +11,9 @@ import javafx.stage.Stage;
 
 import java.util.Random;
 
+/**
+ * Klasa do obslugi pytan (skrzynki) w grze, za ktore dostajemy punkty
+ */
 public class GameDialog extends Stage {
 
     private Text textQuestion = new Text();
@@ -51,7 +54,10 @@ public class GameDialog extends Stage {
         return number;
     }
 
-
+    /**
+     * Konstruktor klasy przygotowujacy okno z pytaniem, pojawiajace sie po zebraniu skrzynki
+     * sprawdza czy haslo wpisane w pole jest zgodny z haslem zapisanym w tablicy AnswerArray i wynik zapisuje w zmiennej correct
+     */
     public GameDialog() {
         Button btnSubmit = new Button("Submit");
         btnSubmit.setOnAction(event -> {
@@ -69,6 +75,9 @@ public class GameDialog extends Stage {
         initModality(Modality.APPLICATION_MODAL);
     }
 
+    /**
+     * Metoda losujaca numer pytania i wyswietlajaca go na ekranie
+     */
     public void open() {
         int number = GenerateNumber();
         textQuestion.setText(QuestionArray[number]);
@@ -80,6 +89,10 @@ public class GameDialog extends Stage {
         show();
     }
 
+    /**
+     * Metoda zwracajaca wartosc odpowiadajaca poprawnosci odpowiedzi
+     * @return poprawnosc odpowiedzi na pytanie
+     */
     public boolean isCorrect() {
         return correct;
     }

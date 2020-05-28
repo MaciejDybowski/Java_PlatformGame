@@ -33,6 +33,9 @@ import java.util.Random;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+/**
+ * Klasa obslugujaca gre singleplayer
+ */
 
 public class PlatformGame extends Application {
 
@@ -111,13 +114,18 @@ public class PlatformGame extends Application {
         String hurt_sound = "hurt.mp3";
 
 
-
-
+    /**
+     * Metoda ustawiajace nazwe gracza
+     * @param User
+     */
 
         public void setUser(String User){
             this.USER = User;
         }
-
+    /**
+     * Metoda ustawiajaca odpowiednie obrazy do symulacji ruchu postaci
+     * @param hero
+     */
         public void setHero(String hero){
             this.HERO = hero;
             switch(hero){
@@ -201,6 +209,10 @@ public class PlatformGame extends Application {
             PLAYER_IMG = new Image(src);
         }
 
+    /**
+     * Metoda tworzaca mape, gracza i kamere podazajaca za nim
+     * @param poziom
+     */
         public void initContent(int poziom) {
             /*System.out.println(USER);
             System.out.println(HERO);*/
@@ -327,6 +339,14 @@ public class PlatformGame extends Application {
                 }
             });
         }
+
+    /**
+     * Metoda do obslugi animacji potworkow w lewo
+     * @param monster
+     * @param value
+     * @param x pozycja potworka w osi x na mapie
+     * @param y pozycja potworka w osi y na mapie
+     */
         // animacja potworkow w lewo
         public void moveMonstersLeft(Node monster, int value , double x , double y){
             Line line2 = new Line();
@@ -347,6 +367,9 @@ public class PlatformGame extends Application {
 
             pathTransition.setOnFinished(new EventHandler<ActionEvent>() {
                 @Override
+                /**
+                 * Zapetlenie ruchu potworka
+                 */
                 public void handle(ActionEvent actionEvent) {
                     monster.setTranslateX(x-100.0);
                     monster.setTranslateY(y);
@@ -841,7 +864,11 @@ public class PlatformGame extends Application {
             return entity;
         }
 
-
+    /**
+     * Metoda do zmiany obrazu postaci
+     * @param player
+     * @param image
+     */
         public void changeImgae(Rectangle player , Image image){
             player.setFill(new ImagePattern(image));
         }
@@ -857,12 +884,20 @@ public class PlatformGame extends Application {
             label.setText(String.valueOf(score));
         }
 
+    /**
+     * Getter sceny z gra
+     * @param myStage
+     */
         public void getStage(Stage myStage){
             this.my_Stage = myStage;
         }
 
 
-
+    /**
+     * Metoda startujaca okno z gra singleplayer wraz z obsluga odpowiedzi (skrzynki)
+     * @param primaryStage
+     * @throws Exception
+     */
         @Override
         public void start(Stage primaryStage) throws Exception {
             initContent(1);
@@ -877,6 +912,10 @@ public class PlatformGame extends Application {
             primaryStage.show();
 
             AnimationTimer timer = new AnimationTimer() {
+                /**
+                 * Odswiezanie ekranu z gra z okreslonym interwalem
+                 * @param now
+                 */
                 @Override
                 public void handle(long now) {
                     if (running) {

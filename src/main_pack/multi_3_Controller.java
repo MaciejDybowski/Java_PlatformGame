@@ -16,7 +16,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
+/**
+ * Klasa obslugujaca menu rozpoczynajace rozgrywke, pozwala cofnac sie do innych menu badz rozpoczac gre multiplayer
+ */
 public class multi_3_Controller implements Initializable {
 
     public Label hello_user;
@@ -32,12 +34,18 @@ public class multi_3_Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-
+    /**
+     * Metoda ustawiajaca odpowiednia nazwe gracza w menu
+     * @param unsername
+     */
     public void hello_user(String unsername){
         hello_user.setText("Login as: "+unsername);
         USER = unsername;
     }
-
+    /**
+     * Metoda ustawiajaca odpowiednie parametry - wybrana postac przez 1 i 2 gracza
+     * @param hero_1
+     */
     public void players_hero(String hero_1 , String hero_2){
         HERO_1 = hero_1;
         HERO_2 = hero_2;
@@ -45,7 +53,11 @@ public class multi_3_Controller implements Initializable {
         player_2_hero.setText(HERO_2);
         
     }
-
+    /**
+     * Metoda pozwalajaca wlaczyc menu z ktorego zaczniemy gre singleplayer - tak jak w poprzednim menu
+     * @param actionEvent
+     * @throws IOException
+     */
     public void single(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/single_layout.fxml"));
@@ -58,7 +70,11 @@ public class multi_3_Controller implements Initializable {
         window.setScene(nextScene);
         window.show();
     }
-
+    /**
+     * Metoda pozwalajaca cofnac sie w menu - z powrotem do wyboru 1 postaci
+     * @param actionEvent
+     * @throws IOException
+     */
     public void multi(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/multi_1_layout.fxml"));
@@ -71,7 +87,13 @@ public class multi_3_Controller implements Initializable {
         window.setScene(nextScene);
         window.show();
     }
-
+    /**
+     * Metoda pozwalajaca wyswietlic tabele wynikow - tak jak w poprzednim menu
+     * @param actionEvent
+     * @throws IOException
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void show_score(ActionEvent actionEvent) throws IOException, SQLException, ClassNotFoundException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/ShowScore_layout.fxml"));
@@ -84,10 +106,17 @@ public class multi_3_Controller implements Initializable {
         window.setScene(nextScene);
         window.show();
     }
-
+    /**
+     * Metoda powolujaca okno z prezentacja postaci
+     * @param actionEvent
+     */
     public void show_hero(ActionEvent actionEvent) {
     }
-
+    /**
+     * Metoda do wylogowywania uzytkownika i przejscia do pierwszego menu
+     * @param actionEvent
+     * @throws IOException
+     */
     public void logout(ActionEvent actionEvent) throws IOException {
         USER = null;
         Parent nextRoot = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
@@ -97,6 +126,11 @@ public class multi_3_Controller implements Initializable {
         window.show();
     }
 
+    /**
+     * Klasa powolujaca okno gry dwuosobowej
+     * @param actionEvent
+     * @throws Exception
+     */
     public void lets_play_multi(ActionEvent actionEvent) throws Exception {
         Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         MultiGame multiGame = new MultiGame();

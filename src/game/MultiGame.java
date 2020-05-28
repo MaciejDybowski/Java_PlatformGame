@@ -28,6 +28,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
 
+/**
+ * Klasa obslugujaca gre multiplayer (2 graczy)
+ */
 public class MultiGame extends Application {
 
     private HashMap<KeyCode, Boolean> keys = new HashMap<KeyCode, Boolean>();
@@ -94,10 +97,19 @@ public class MultiGame extends Application {
     private Image skill_left = new Image("file:src/asset/skile/efecto_fuego_00023 _left.png");
     private Image skill_right = new Image("file:src/asset/skile/efecto_fuego_00023.png");
 
+    /**
+     * Metoda ustawiajaca nazwe gracza
+     * @param User
+     */
     public void setUser(String User){
         this.USER = User;
     }
 
+    /**
+     * Metoda ustawiajaca odpowiednie obrazy do symulacji ruchu postaci
+     * @param hero
+     * @param hero2
+     */
     public void setHero(String hero, String hero2){
         this.HERO = hero;
         this.HERO2 = hero2;
@@ -263,6 +275,10 @@ public class MultiGame extends Application {
         PLAYER_IMG2 = HeroStay2;
     }
 
+    /**
+     * Metoda tworzaca mape i graczy, wraz z obsluga kamery podazajacej za nimi
+     * @param poziom
+     */
     public void initContent(int poziom) {
         System.out.println("User = " + USER);
         //System.out.println(HERO);
@@ -697,8 +713,11 @@ public class MultiGame extends Application {
     }
 
 
-
-
+    /**
+     * Metoda powolujaca okno z gra multiplayer
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         initContent(1);
@@ -711,6 +730,10 @@ public class MultiGame extends Application {
         primaryStage.show();
 
         AnimationTimer timer = new AnimationTimer() {
+            /**
+             * Odswiezanie ekranu z gra z okreslonym interwalem
+             * @param now
+             */
             @Override
             public void handle(long now) {
                 if (running) {

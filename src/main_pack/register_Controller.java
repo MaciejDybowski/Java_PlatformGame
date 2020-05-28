@@ -17,6 +17,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * Klasa odpowiadajaca za rejestracje uzytkownika
+ */
 public class register_Controller implements Initializable {
     public PasswordField getUserPassword;
     public TextField getUserName;
@@ -29,6 +32,13 @@ public class register_Controller implements Initializable {
 
     }
 
+    /**
+     * Metoda rejestrujaca konto uzytkownika, zapewnia walidacje - hasla musza sie zgadzac
+     * @param actionEvent
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public void registerAccount(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
         String username, password , password1;
         username = getUserName.textProperty().get();

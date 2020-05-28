@@ -16,6 +16,9 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
+/**
+ * Klasa odpowiadajaca za tworzenie poziomu i umieszczanie na nim postaci
+ */
 public class LevelData {
 
     private ArrayList<Node> platforms = new ArrayList<Node>();
@@ -30,8 +33,6 @@ public class LevelData {
 
     private Pane gameRoot;
 
-    // problemy gita
-    //sa pojebane
 
     Image Tile_1 = new Image("file:src/asset/Maps/Zestaw_1/Tiles/1.png");
     Image Tile_2 = new Image("file:src/asset/Maps/Zestaw_1/Tiles/2.png");
@@ -70,7 +71,10 @@ public class LevelData {
 
     Image Tile_boss_1 = new Image("file:src/asset/postacie/Boss/walk1_l.png");
 
-
+    /**
+     * Prosty konstruktor mapy
+     * @param gameRoot
+     */
     public LevelData(Pane gameRoot) {
         this.gameRoot = gameRoot;
     }
@@ -148,7 +152,15 @@ public class LevelData {
             "1111111111111111111111111111111111"
     };
 
-
+    /**
+     * Metoda tworzaca instancje o okreslonych wymiarach na okreslonych wspolrzednych o okreslonym obrazie
+     * @param x
+     * @param y
+     * @param w
+     * @param h
+     * @param image
+     * @return
+     */
     public Node createEntity2(int x, int y, int w, int h, Image image) {
         Rectangle entity = new Rectangle(w, h);
         entity.setTranslateX(x);
@@ -160,6 +172,9 @@ public class LevelData {
         return entity;
     }
 
+    /**
+     * Metoda tworzaca poziom do gry multi
+     */
     public void createMulti(){
 
         for (int i = 0; i < LEVEL_MULTI.length; i++) {
@@ -178,6 +193,9 @@ public class LevelData {
         }
     }
 
+    /**
+     * Metoda tworzaca poziom do walki z bossem
+     */
     public void createLevelBoss(){
 
         for (int i = 0; i < LEVEL_BOSS.length; i++) {
@@ -205,6 +223,9 @@ public class LevelData {
         }
     }
 
+    /**
+     * Metoda tworzaca poziom 1
+     */
     public void createLevel1()
     {
 
@@ -292,6 +313,9 @@ public class LevelData {
             }
         }
     }
+    /**
+     * Metoda tworzaca poziom 2
+     */
     public void createLevel2(){
         for (int i = 0; i < LEVEL2.length; i++) {
             String line = LevelData.LEVEL2[i];
@@ -354,7 +378,9 @@ public class LevelData {
             }
         }
     }
-
+    /**
+     * Metoda tworzaca poziom 3
+     */
     public void createLevel3(){
         for (int i = 0; i < LEVEL3.length; i++) {
             String line = LevelData.LEVEL3[i];
@@ -410,33 +436,59 @@ public class LevelData {
         }
     }
 
+    /**
+     * Getter zwracajacy liste z platformami
+     * @return
+     */
     public ArrayList<Node> getPlatforms() {
         return platforms;
     }
-
+    /**
+     * Getter zwracajacy liste z monetami
+     * @return
+     */
     public ArrayList<Node> getCoins() {
         return coins;
     }
+    /**
+     * Getter zwracajacy liste ze skrzynkami
+     * @return
+     */
     public ArrayList<Node> getChests() {
         return chests;
     }
-
+    /**
+     * Getter zwracajacy liste z potworami
+     * @return
+     */
     public ArrayList<Node> getMonster() {
         return monster;
     }
-
+    /**
+     * Getter zwracajacy liste z bossem
+     * @return
+     */
     public ArrayList<Node> getBoss() {
         return boss;
     }
-
+    /**
+     * Getter zwracajacy liste z drzwami
+     * @return
+     */
     public ArrayList<Node> getDoors() {
         return doors;
     }
-
+    /**
+     * Getter zwracajacy liste z woda
+     * @return
+     */
     public ArrayList<Node> getWater() {
         return water;
     }
 
+    /**
+     * Metoda do wymazywania poziomu
+     */
     public void deleteAll(){
         for(int i = 0 ; i < platforms.size() ; i++){
             platforms.remove(i);
@@ -457,6 +509,10 @@ public class LevelData {
 
     }
 
+    /**
+     * Metoda zwracajaca obiekt drzwi do nastepnego poziomu
+     * @return
+     */
     public Node getNext_lever_door() {
         return next_lever_door;
     }

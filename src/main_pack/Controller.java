@@ -19,6 +19,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * Klasa odpowiadajaca za ekran powitalny - logowanie i rejestracja
+ */
 public class Controller implements Initializable {
 
 
@@ -32,6 +35,11 @@ public class Controller implements Initializable {
 
     }
 
+    /**
+     * Metoda pozwalajaca zalogowac sie z uzyciem bazy danych, po poprawnym zalogowaniu powoluje okno wyboru gry single/multi
+     * @param actionEvent
+     * @throws IOException
+     */
     public void loginToGame(ActionEvent actionEvent) throws IOException {
         String username = getUserName.textProperty().get();
         String password = getUserPassword.textProperty().get();
@@ -72,6 +80,11 @@ public class Controller implements Initializable {
 
     }
 
+    /**
+     * Metoda ta powoluje okno do rejestracji uzytkownika
+     * @param mouseEvent
+     * @throws IOException
+     */
     public void goRegister(MouseEvent mouseEvent) throws IOException {
         Parent nextRoot = FXMLLoader.load(getClass().getResource("/fxml/register_layout.fxml"));
         Scene nextScene = new Scene(nextRoot);

@@ -16,6 +16,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * Klasa obslugujace menu konca gry - powrot do menu, zapisz wynik, sprobuj jeszcze raz
+ */
 public class PopUp_Controller implements Initializable {
     public Label hello_user;
     public Label user_score;
@@ -25,18 +28,34 @@ public class PopUp_Controller implements Initializable {
     Stage game_stage;
     PlatformGame moja_gra;
 
+    /**
+     * Metoda ustawiajaca parametr gry
+     * @param game
+     */
     public void myPlatformGame(PlatformGame game){
         moja_gra = game;
     }
-
+    /**
+     * Metoda ustawiajaca parametr bohatera
+     *
+     */
     public void set_hero(String herosik){
         HERO = herosik;
     }
 
+    /**
+     * Metoda ustawiajaca parametr sceny
+     * @param stage
+     */
     public void set_stage(Stage stage){
         game_stage = stage;
     }
 
+    /**
+     * Metoda ustawiajaca parametr nazwy gracza i wynik
+     * @param user
+     * @param wynik
+     */
     public void user_and_score(String user , int wynik){
         hello_user.setText(user);
         user_score.setText(String.valueOf(wynik));
@@ -44,7 +63,13 @@ public class PopUp_Controller implements Initializable {
         SCORE = wynik;
     }
 
-
+    /**
+     * Metoda zapisujaca wynik w bazie danych - laczy sie przez DbConnector, nastepnie cofa do menu glownego
+     * @param actionEvent
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public void save_score(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
         DbConnector db = new DbConnector();
         db.add_score(USER,SCORE);
@@ -62,6 +87,11 @@ public class PopUp_Controller implements Initializable {
 
     }
 
+    /**
+     * Metoda cofajaca do menu glownego
+     * @param actionEvent
+     * @throws IOException
+     */
     public void go_to_menu(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/menu_layout.fxml"));
@@ -75,6 +105,11 @@ public class PopUp_Controller implements Initializable {
         window.show();
     }
 
+    /**
+     * Metoda ktora zaczyna rozgrywke singleplayer jeszcze raz
+     * @param actionEvent
+     * @throws Exception
+     */
     public void try_again(ActionEvent actionEvent) throws Exception {
         Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         PlatformGame platformGame = new PlatformGame();
